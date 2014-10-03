@@ -119,16 +119,17 @@ while(userchoice.lower() == 'yes'):
 
         time1 = datetime.now()
         for onebyone in query:
-    
+            #word_ls.append(Dict_Words[onebyone])
             word_ls = sorted(list(set(word_ls + Dict_Words[onebyone])))
-            for onebyone1 in word_ls:
-                print (" Found at: ", onebyone1, data_list[onebyone1][:80])
+        #print (word_ls)
+        for onebyone1 in word_ls:
+            print (" Found at: ", onebyone1, data_list[onebyone1][:50])
                 
         time2 = datetime.now()
         print("\nExecution Time  :"+str(time2.microsecond-time1.microsecond))
 
 
-    elif(("and" in query) and ("or" not in query)) or (("and" in query) and ("or" in query)) or (("or" not in query) and ("and" not in query) and (len(query) > 1)):
+    elif(("and" in query) or (len(query) > 1)):
         print("\nAND or And/OR Search as per user request on querry: "+str(query)+".......")
         if "and" in query:      
             query.remove("and")
@@ -140,9 +141,9 @@ while(userchoice.lower() == 'yes'):
         
         for value1 in query[1:]:
             word_lst = Dict_Words[value1]
-            word_ls  = sorted(list(set(word_ls).intersection(word_lst)))
+            word_ls  = sorted(list(set(word_lst).intersection(word_ls)))
         for onebyone in word_ls:
-            print(" Found at: ", onebyone, data_list[onebyone][:80])    
+            print(" Found at: ", onebyone, data_list[onebyone][:50])
         
         time2 = datetime.now()
         print("\nExecution Time  :"+str(time2.microsecond-time1.microsecond))               
