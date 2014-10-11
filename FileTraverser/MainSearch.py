@@ -2,6 +2,6 @@ import dataload
 import indexer
 import searcher
 
-dataload.traverse()
+filewalk.traverse()
 indexer.dict()
 searcher.search()
