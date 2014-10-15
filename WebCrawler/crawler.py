@@ -5,10 +5,10 @@ import os
 import pickle
 
 
-def visit_url(url, domain):
+def crawler(url, domain):
 	global crawler_backlog
 	global WebList
-	WebList = []
+	
 	if(len(crawler_backlog)>10):
 		return
 	if(url in crawler_backlog and crawler_backlog[url] == 1):
@@ -53,16 +53,17 @@ def visit_url(url, domain):
 			for (urls) in re.findall(regexp_url, content_string):
 					if(urls  not in crawler_backlog or crawler_backlog[urls] != 1):
 						crawler_backlog[urls] = 0
-						visit_url(urls, domain)
+						crawler(urls, domain)
 	except URLError as e:
 		print("error")
 	WriteP   = os.getcwd() + "/website.pickle"
 	FileCont = open(WriteP,'wb')
 	pickle.dump(WebList,FileCont)
+	print (WebList)
     #FileCont.close()
-
+WebList = []
 crawler_backlog = {}
 seed = "http://www.newhaven.edu/"
 crawler_backlog[seed]=0
-visit_url(seed, "www.newhaven.edu")
+crawler(seed, "www.newhaven.edu")
 

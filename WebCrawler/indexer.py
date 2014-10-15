@@ -18,12 +18,13 @@ import stat
 def dict():
     Dict_Words = {}
     incerement = 0
+    shelvedata = shelve.open("file_content")
     files = ['rawdata.pickle','website.pickle']
     for file1 in files:  
         var1 = os.path.join(os.getcwd(),file1)
         file_raw = open(var1,'rb')
         content1 = pickle.load(file_raw)
-        shelvedata = shelve.open("file_content", writeback  = True)
+        
         print(content1)
         for fpath, fcontent in content1:
             fcontent = fcontent.split(' ')

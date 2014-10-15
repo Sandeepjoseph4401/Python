@@ -2,6 +2,7 @@ import os
 import fnmatch
 import pickle
 import shelve
+from Weather import find_weather
 from indexer import dict
 from datetime import datetime
 
@@ -20,7 +21,7 @@ def search():
         if ("or" in query) and ("and" not in query):
             print("\nOR Search as per user request on querry: "+str(query)+".......")
             query.remove("or")                          
-
+            find_weather(query[0],query[1])
             time1 = datetime.now()
             for onebyone in query:
         
@@ -40,7 +41,7 @@ def search():
                 query.remove("and")
             if "or" in query:
                 query.remove("or")
-                
+            find_weather(query[0],query[1])    
             time1 = datetime.now()    
             word_ls =  data_list[query[0]]
             
