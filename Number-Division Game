@@ -1,0 +1,42 @@
+'''
+Program     : Kids number Game
+Description : Testing with division. Enjoy!!
+Author      : Sandeep Joseph
+
+'''
+
+from random import randrange
+
+while True:
+    a  = randrange(20)
+    b  = randrange(20)
+    
+
+
+    try:
+        result  =  a / b
+        if result == int(result):
+            result = int(result)
+            userresponse = input('Please answer (Q - to quit the program)'+str(a)+' / '+str(b)+' = ')
+            print('------------------------------------------------------------')
+            print('Actual result : ',result)
+            print('Your Response : ',userresponse)
+            print()
+            if userresponse.lower() == 'q':
+                print('Thank you...Quiting application!')
+                break
+            if (result == int(userresponse)):
+                print('WOW...You got it !!')
+                print('Try again')
+                print()
+
+        else:
+            continue
+    except ZeroDivisionError:
+        pass 
+    except ValueError:
+        print("caught value error")
+        print()
+    except Exception as e:
+        print("Unexpected error...... Sorry...!")
+        print()
